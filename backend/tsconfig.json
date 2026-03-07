@@ -1,18 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "target": "ES2022",                /* Stable for Node 18/20/22+ */
+    "module": "NodeNext",              /* Essential for modern Node ESM */
+    "moduleResolution": "NodeNext",    /* Ensures compatibility with Node's resolution logic */
+    "lib": ["ESNext"],                 /* Removed 'DOM' because this isn't a browser */
     "outDir": "./dist",
     "rootDir": "./src",
-    "strict": true, 
-    "esModuleInterop": true,
+    
+    /* Type Checking & Safety */
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    
+    /* Backend Specifics */
+    "esModuleInterop": true,           /* Crucial for importing CJS libs like Express */
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": true, // Helpful for debugging
-    "resolveJsonModule": true, // Let's you import .json files
-    "noImplicitReturns": true, // Forces better logic flow
-    "noFallthroughCasesInSwitch": true
+    "sourceMap": true,                 /* Essential for debugging in VS Code */
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
