@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2022",                /* Stable for Node 18/20/22+ */
-    "module": "NodeNext",              /* Essential for modern Node ESM */
-    "moduleResolution": "NodeNext",    /* Ensures compatibility with Node's resolution logic */
+    "target": "ES2020",                /* Stable for Node 18/20/22+ */
+    "module": "commonjs",              /* Essential for modern Node ESM */
+    // "moduleResolution": "NodeNext",    /* Ensures compatibility with Node's resolution logic */
     "lib": ["ESNext"],                 /* Removed 'DOM' because this isn't a browser */
     "outDir": "./dist",
     "rootDir": "./src",
