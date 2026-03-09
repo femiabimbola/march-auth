@@ -1,5 +1,4 @@
 import { drizzle } from 'drizzle-orm/node-postgres';
-// Local Import
 import { config } from '../lib/config/app.config';
 
 export const db = drizzle({ 

@@ -1,8 +1,6 @@
 import {
   pgTable, serial,
-  varchar,
-  text, timestamp,
-  boolean,
+  varchar, text, timestamp, boolean,
   integer,
   pgEnum,
   json,
