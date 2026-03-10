@@ -27,14 +27,14 @@ export function signAccessToken(payload: Omit<AccessTokenPayload, "iat" | "exp">
   if (!secret) {
     throw new Error("JWT_ACCESS_SECRET is not set in environment variables");
   }
-    
+
   return jwt.sign(payload, secret, {
-    expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || "15m",
-  });
+  expiresIn: (process.env.JWT_ACCESS_EXPIRES_IN || "15m") as jwt.SignOptions["expiresIn"],
+});
 }
 
 export function verifyAccessToken(token: string): AccessTokenPayload {
-  return jwt.verify(token, process.env.JWT_ACCESS_SECRET!) as AccessTokenPayload;
+  return jwt.verify(token, process.env.JWT_ACCESS_SECRET!) as unknown as AccessTokenPayload;
 }
 
 // ── Refresh Token ──────────────────────────────────────
@@ -52,14 +52,14 @@ export function signRefreshToken(userId: number): {
   };
 
   const token = jwt.sign(payload, process.env.JWT_REFRESH_SECRET!, {
-    expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || "7d",
+    expiresIn: (process.env.JWT_REFRESH_EXPIRES_IN || "7d") as jwt.SignOptions["expiresIn"] ,
   });
 
   return { token, tokenId, payload };
 }
 
 export function verifyRefreshToken(token: string): RefreshTokenPayload {
-  return jwt.verify(token, process.env.JWT_REFRESH_SECRET!) as RefreshTokenPayload;
+  return jwt.verify(token, process.env.JWT_REFRESH_SECRET!) as unknown as RefreshTokenPayload;
 }
 
 // ── Token Hash ─────────────────────────────────────────
