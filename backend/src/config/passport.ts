@@ -14,21 +14,16 @@ passport.use(
   "local",
   new LocalStrategy(
     {
-      usernameField: "identifier", // accepts either username or email
+      usernameField: "email", // accepts either username or email
       passwordField: "password",
     },
-    async (identifier, password, done) => {
+    async (email, password, done) => {
       try {
         // Look up by username OR email
-        const [user] = await db
+         const [user] = await db
           .select()
           .from(users)
-          .where(
-            or(
-              eq(users.username, identifier),
-              eq(users.email, identifier)
-            )
-          )
+          .where(eq(users.email, email))
           .limit(1);
 
         if (!user) {
